@@ -84,8 +84,9 @@ std::istream &operator>>(std::istream &is, Vector3D &v) {
 }
 
 class Matrix3D {
-public:
+private:
     double matrix[3][3];
+public:
     Matrix3D() : Matrix3D (0,0,0,0,0,0,0,0,0) {}
 
     Matrix3D (double a, double b, double c, double d, double e, double f, double g, double h, double i) {
@@ -127,6 +128,11 @@ public:
     double det(){
         return matrix[0][0] * (matrix[1][1] * matrix[2][2] - matrix[2][1] * matrix[1][2]) - matrix[0][1] * (matrix[1][0] * matrix[2][2] - matrix[2][0] * matrix[1][2]) + matrix[0][2] * (matrix[1][0] * matrix[2][1] - matrix[2][0] * matrix[1][1]);
     }
+
+    friend Matrix3D operator*(const double a, const Matrix3D &m);
+    friend std::ostream &operator<<(std::ostream &os, const Matrix3D &m);
+    friend std::istream &operator>>(std::istream &is, Matrix3D &m);
+
 };
 
 Matrix3D operator*(const double a, const Matrix3D &m){
