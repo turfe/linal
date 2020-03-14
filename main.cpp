@@ -95,6 +95,9 @@ public:
     matrix[2][0] = g, matrix[2][1] = h, matrix[2][2] = i;
     }
 
+    ~Matrix3D(){
+    }
+
     Matrix3D operator*(const double a){
         return Matrix3D(matrix[0][0] * a, matrix[0][1] * a, matrix[0][2] * a,
                         matrix[1][0] * a, matrix[1][1] * a, matrix[1][2] * a,
