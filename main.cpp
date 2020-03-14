@@ -41,11 +41,12 @@ public:
     }
 
     bool operator==(const Vector3D &v) const {
-        return v.x == x && v.y == y && v.z == z;
+        double E = 0.000001;
+        return (abs(v.x - x) < E) && (abs(v.y - y) < E) && (abs(v.z - z) < E);
     }
 
     bool operator!=(const Vector3D &v) const {
-        return v.x != x || v.y != y || v.z != z;
+        return !(*this == v);
     }
 
     Vector3D operator+(const Vector3D &v) const {
@@ -175,7 +176,6 @@ int main() {
     cout << "A + B = " << A + B << endl;
     cout << "A - B = " << A - B << endl;
     cout << "A * B = " << A * B << endl;
-
 
     // Матрица задана в коде
     Matrix3D C(1, 0, 0, 0, 1, 0, 0, 0, 1);
